@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
+#include <unistd.h>
+
+#define NS_PER_SECOND 1000000000
 
 double c_x_min;
 double c_x_max;
@@ -47,7 +51,7 @@ void allocate_image_buffer(){
     for(int i = 0; i < image_buffer_size; i++){
         image_buffer[i] = (unsigned char *) malloc(sizeof(unsigned char) * rgb_size);
     };
-};
+}
 
 void init(int argc, char *argv[]){
     if(argc < 6){
@@ -73,7 +77,7 @@ void init(int argc, char *argv[]){
         pixel_width       = (c_x_max - c_x_min) / i_x_max;
         pixel_height      = (c_y_max - c_y_min) / i_y_max;
     };
-};
+}
 
 void update_rgb_buffer(int iteration, int x, int y){
     int color;
@@ -90,7 +94,7 @@ void update_rgb_buffer(int iteration, int x, int y){
         image_buffer[(i_y_max * y) + x][1] = colors[color][1];
         image_buffer[(i_y_max * y) + x][2] = colors[color][2];
     };
-};
+}
 
 void write_to_file(){
     FILE * file;
@@ -109,7 +113,7 @@ void write_to_file(){
     };
 
     fclose(file);
-};
+}
 
 void compute_mandelbrot(){
     double z_x;
@@ -155,16 +159,51 @@ void compute_mandelbrot(){
             update_rgb_buffer(iteration, i_x, i_y);
         };
     };
-};
+}
+
+void sub_timespec(char *message, struct timespec t1, struct timespec t2)
+{
+    struct timespec td;
+    td.tv_nsec = t2.tv_nsec - t1.tv_nsec;
+    td.tv_sec  = t2.tv_sec - t1.tv_sec;
+    if (td.tv_sec > 0 && td.tv_nsec < 0)
+    {
+        td.tv_nsec += NS_PER_SECOND;
+        td.tv_sec--;
+    }
+    else if (td.tv_sec < 0 && td.tv_nsec > 0)
+    {
+        td.tv_nsec -= NS_PER_SECOND;
+        td.tv_sec++;
+    }
+    printf("%s%d.%.9lds\n", message, (int)td.tv_sec, td.tv_nsec);
+}
 
 int main(int argc, char *argv[]){
+    struct timespec a, b, c, d;
+
     init(argc, argv);
 
+    printf("1\n");
+    clock_gettime(CLOCK_REALTIME, &a);
+    printf("2\n");
     allocate_image_buffer();
-
+    printf("3\n");
+    clock_gettime(CLOCK_REALTIME, &b);
+    printf("4\n");
     compute_mandelbrot();
-
+    printf("5\n");
+    clock_gettime(CLOCK_REALTIME, &c);
+    printf("6\n");
     write_to_file();
+    printf("7\n");
+    clock_gettime(CLOCK_REALTIME, &d);
+    printf("8\n");
+
+    sub_timespec("Allocation time: ", a, b);
+    sub_timespec("Execution time: ", b, c);
+    sub_timespec("I/O time: ", c, d);
+    sub_timespec("Full time: ", a, d);
 
     return 0;
-};
+}
