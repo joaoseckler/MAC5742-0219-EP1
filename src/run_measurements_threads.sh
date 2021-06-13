@@ -27,7 +27,7 @@ for THREAD in 1 2 4 8 16 32; do
 
         SIZE=$INITIAL_SIZE
 
-        mv *.log results/$NAME$THREAD
+        mv *.log results/ph/$NAME$THREAD
         rm output.ppm
     done
 done

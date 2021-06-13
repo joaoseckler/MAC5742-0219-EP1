@@ -1,5 +1,6 @@
 *.swp
 *.ppm
+.ipynb_checkpoints
 
 src/mandelbrot_seq
 src/mandelbrot_pth

@@ -30,7 +30,7 @@ for NAME in ${NAMES[@]}; do
 done
 
 
-NAME='mandeblot_seq'
+NAME='mandelbrot_seq'
 
 mkdir -p results/$NAME
 
