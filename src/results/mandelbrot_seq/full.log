@@ -1,140 +1,1378 @@
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007404s
+Execution time: 0.000081315s
+I/O time: 0.000068300s
+Full time: 0.000157019s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007694s
+Execution time: 0.000081495s
+I/O time: 0.000076295s
+Full time: 0.000165484s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007234s
+Execution time: 0.000081344s
+I/O time: 0.000057058s
+Full time: 0.000145636s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007114s
+Execution time: 0.000081234s
+I/O time: 0.000068019s
+Full time: 0.000156367s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000006954s
+Execution time: 0.000081194s
+I/O time: 0.000060635s
+Full time: 0.000148783s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007003s
+Execution time: 0.000080994s
+I/O time: 0.000054924s
+Full time: 0.000142921s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007324s
+Execution time: 0.000081225s
+I/O time: 0.000064773s
+Full time: 0.000153322s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000006893s
+Execution time: 0.000081265s
+I/O time: 0.000054944s
+Full time: 0.000143102s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000007394s
+Execution time: 0.000081104s
+I/O time: 0.000054133s
+Full time: 0.000142631s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000006953s
+Execution time: 0.000081465s
+I/O time: 0.000059703s
+Full time: 0.000148121s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 16' (10 runs):
 
-              0.62 msec task-clock                #    0.541 CPUs utilized            ( +-  3.93% )
-                 0      context-switches          #    0.162 K/sec                    ( +-100.00% )
-                 0      cpu-migrations            #    0.000 K/sec                  
-                58      page-faults               #    0.094 M/sec                    ( +-  0.43% )
-         1,260,315      cycles                    #    2.039 GHz                      ( +-  2.34% )
-         1,101,064      instructions              #    0.87  insn per cycle           ( +-  0.49% )
-           198,949      branches                  #  321.871 M/sec                    ( +-  0.54% )
-             8,459      branch-misses             #    4.25% of all branches          ( +-  1.62% )
+              0,45 msec task-clock                #    0,701 CPUs utilized            ( +-  1,86% )
+                 0      context-switches          #    0,223 K/sec                    ( +-100,00% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+                62      page-faults               #    0,139 M/sec                    ( +-  0,35% )
+           959.644      cycles                    #    2,136 GHz                      ( +-  2,78% )  (91,33%)
+            40.043      stalled-cycles-frontend   #    4,17% frontend cycles idle     ( +-  3,25% )
+           323.642      stalled-cycles-backend    #   33,73% backend cycles idle      ( +-  2,64% )
+         1.140.799      instructions              #    1,19  insn per cycle         
+                                                  #    0,28  stalled cycles per insn  ( +-  0,30% )
+           203.080      branches                  #  452,069 M/sec                    ( +-  0,31% )
+     <not counted>      branch-misses                                                 ( +-100,00% )  (8,67%)
 
-         0.0011432 +- 0.0000311 seconds time elapsed  ( +-  2.72% )
+         0,0006411 +- 0,0000447 seconds time elapsed  ( +-  6,97% )
 
+Some events weren't counted. Try disabling the NMI watchdog:
+	echo 0 > /proc/sys/kernel/nmi_watchdog
+	perf stat ...
+	echo 1 > /proc/sys/kernel/nmi_watchdog
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000029717s
+Execution time: 0.000298546s
+I/O time: 0.000080473s
+Full time: 0.000408736s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000029195s
+Execution time: 0.000336429s
+I/O time: 0.000071656s
+Full time: 0.000437280s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000031701s
+Execution time: 0.000319917s
+I/O time: 0.000083328s
+Full time: 0.000434946s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000019808s
+Execution time: 0.000182306s
+I/O time: 0.000047640s
+Full time: 0.000249754s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000017954s
+Execution time: 0.000181895s
+I/O time: 0.000042401s
+Full time: 0.000242250s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000017313s
+Execution time: 0.000183158s
+I/O time: 0.000042851s
+Full time: 0.000243322s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000017514s
+Execution time: 0.000182787s
+I/O time: 0.000043102s
+Full time: 0.000243403s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000029766s
+Execution time: 0.000298697s
+I/O time: 0.000069582s
+Full time: 0.000398045s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000030998s
+Execution time: 0.000298046s
+I/O time: 0.000072127s
+Full time: 0.000401171s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000028243s
+Execution time: 0.000298618s
+I/O time: 0.000070403s
+Full time: 0.000397264s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 32' (10 runs):
 
-              0.83 msec task-clock                #    0.636 CPUs utilized            ( +-  3.64% )
-                 0      context-switches          #    0.121 K/sec                    ( +-100.00% )
-                 0      cpu-migrations            #    0.121 K/sec                    ( +-100.00% )
-                66      page-faults               #    0.079 M/sec                    ( +-  0.68% )
-         1,866,562      cycles                    #    2.254 GHz                      ( +-  2.36% )
-         1,967,935      instructions              #    1.05  insn per cycle           ( +-  0.26% )
-           299,526      branches                  #  361.729 M/sec                    ( +-  0.36% )
-             9,026      branch-misses             #    3.01% of all branches          ( +-  0.86% )
+              0,59 msec task-clock                #    0,818 CPUs utilized            ( +-  7,81% )
+                 0      context-switches          #    0,170 K/sec                    ( +-100,00% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+                70      page-faults               #    0,118 M/sec                    ( +-  0,47% )
+         1.507.422      cycles                    #    2,558 GHz                      ( +-  0,54% )  (99,41%)
+            38.176      stalled-cycles-frontend   #    2,53% frontend cycles idle     ( +-  3,13% )
+           759.956      stalled-cycles-backend    #   50,41% backend cycles idle      ( +-  0,77% )
+         1.999.618      instructions              #    1,33  insn per cycle         
+                                                  #    0,38  stalled cycles per insn  ( +-  0,14% )
+           297.897      branches                  #  505,482 M/sec                    ( +-  0,18% )
+     <not counted>      branch-misses                                                 ( +-100,00% )  (0,59%)
 
-         0.0013025 +- 0.0000370 seconds time elapsed  ( +-  2.84% )
+         0,0007206 +- 0,0000588 seconds time elapsed  ( +-  8,16% )
 
+Some events weren't counted. Try disabling the NMI watchdog:
+	echo 0 > /proc/sys/kernel/nmi_watchdog
+	perf stat ...
+	echo 1 > /proc/sys/kernel/nmi_watchdog
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000113155s
+Execution time: 0.001169761s
+I/O time: 0.000149454s
+Full time: 0.001432370s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000126110s
+Execution time: 0.001233562s
+I/O time: 0.000164052s
+Full time: 0.001523724s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000083709s
+Execution time: 0.000705970s
+I/O time: 0.000094269s
+Full time: 0.000883948s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000110530s
+Execution time: 0.001154502s
+I/O time: 0.000149283s
+Full time: 0.001414315s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000123314s
+Execution time: 0.001173578s
+I/O time: 0.000149905s
+Full time: 0.001446797s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000124096s
+Execution time: 0.001234294s
+I/O time: 0.000159172s
+Full time: 0.001517562s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000118955s
+Execution time: 0.001239715s
+I/O time: 0.000145656s
+Full time: 0.001504326s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000113716s
+Execution time: 0.001152999s
+I/O time: 0.000147661s
+Full time: 0.001414376s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000110499s
+Execution time: 0.001146347s
+I/O time: 0.000143703s
+Full time: 0.001400549s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000115650s
+Execution time: 0.001143050s
+I/O time: 0.000147721s
+Full time: 0.001406421s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 64' (10 runs):
 
-              1.66 msec task-clock                #    0.760 CPUs utilized            ( +-  1.97% )
-                 0      context-switches          #    0.000 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-                96      page-faults               #    0.058 M/sec                    ( +-  0.42% )
-         4,169,922      cycles                    #    2.511 GHz                      ( +-  1.00% )
-         5,416,439      instructions              #    1.30  insn per cycle           ( +-  0.06% )
-           704,880      branches                  #  424.460 M/sec                    ( +-  0.09% )
-            10,171      branch-misses             #    1.44% of all branches          ( +-  1.00% )
+              1,69 msec task-clock                #    0,915 CPUs utilized            ( +-  4,21% )
+                 0      context-switches          #    0,178 K/sec                    ( +- 50,92% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+               101      page-faults               #    0,060 M/sec                    ( +-  0,26% )
+         3.743.809      cycles                    #    2,219 GHz                      ( +-  0,43% )  (67,44%)
+            44.511      stalled-cycles-frontend   #    1,19% frontend cycles idle     ( +-  2,91% )
+         2.502.385      stalled-cycles-backend    #   66,84% backend cycles idle      ( +-  0,34% )
+         5.467.560      instructions              #    1,46  insn per cycle         
+                                                  #    0,46  stalled cycles per insn  ( +-  0,05% )
+           689.734      branches                  #  408,880 M/sec                    ( +-  0,07% )
+             2.569      branch-misses             #    0,37% of all branches          ( +- 34,52% )  (32,56%)
 
-         0.0021852 +- 0.0000417 seconds time elapsed  ( +-  1.91% )
+         0,0018443 +- 0,0000787 seconds time elapsed  ( +-  4,27% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000370704s
+Execution time: 0.003496129s
+I/O time: 0.000334926s
+Full time: 0.004201759s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000617673s
+Execution time: 0.004776890s
+I/O time: 0.000452329s
+Full time: 0.005846892s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000348712s
+Execution time: 0.003504775s
+I/O time: 0.000330237s
+Full time: 0.004183724s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000442160s
+Execution time: 0.004361883s
+I/O time: 0.000329225s
+Full time: 0.005133268s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000350035s
+Execution time: 0.003520444s
+I/O time: 0.000329907s
+Full time: 0.004200386s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000345646s
+Execution time: 0.003501669s
+I/O time: 0.000330247s
+Full time: 0.004177562s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000347430s
+Execution time: 0.003518702s
+I/O time: 0.000328994s
+Full time: 0.004195126s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000347540s
+Execution time: 0.003516768s
+I/O time: 0.000330307s
+Full time: 0.004194615s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000349143s
+Execution time: 0.003519142s
+I/O time: 0.000328514s
+Full time: 0.004196799s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.000349864s
+Execution time: 0.003520856s
+I/O time: 0.000328403s
+Full time: 0.004199123s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 128' (10 runs):
 
-              5.29 msec task-clock                #    0.909 CPUs utilized            ( +-  4.95% )
-                 0      context-switches          #    0.000 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-               216      page-faults               #    0.041 M/sec                    ( +-  0.20% )
-        14,604,777      cycles                    #    2.760 GHz                      ( +-  4.69% )
-        19,071,811      instructions              #    1.31  insn per cycle           ( +-  0.03% )
-         2,313,176      branches                  #  437.213 M/sec                    ( +-  0.04% )
-            22,558      branch-misses             #    0.98% of all branches          ( +- 20.66% )
+              4,71 msec task-clock                #    0,966 CPUs utilized            ( +-  3,93% )
+                 1      context-switches          #    0,149 K/sec                    ( +- 21,82% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+               221      page-faults               #    0,047 M/sec                    ( +-  0,11% )
+        12.334.244      cycles                    #    2,621 GHz                      ( +-  0,36% )  (49,13%)
+            57.541      stalled-cycles-frontend   #    0,47% frontend cycles idle     ( +-  3,00% )  (97,22%)
+         9.280.922      stalled-cycles-backend    #   75,25% backend cycles idle      ( +-  0,09% )
+        19.132.557      instructions              #    1,55  insn per cycle         
+                                                  #    0,49  stalled cycles per insn  ( +-  0,03% )
+         2.231.071      branches                  #  474,083 M/sec                    ( +-  0,04% )
+             9.014      branch-misses             #    0,40% of all branches          ( +- 12,67% )  (53,65%)
 
-          0.005820 +- 0.000301 seconds time elapsed  ( +-  5.17% )
+          0,004871 +- 0,000193 seconds time elapsed  ( +-  3,97% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001850724s
+Execution time: 0.013953646s
+I/O time: 0.000919486s
+Full time: 0.016723856s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.002280811s
+Execution time: 0.015902055s
+I/O time: 0.001201441s
+Full time: 0.019384307s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001954792s
+Execution time: 0.014315933s
+I/O time: 0.000934254s
+Full time: 0.017204979s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001982455s
+Execution time: 0.013968694s
+I/O time: 0.000929575s
+Full time: 0.016880724s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001952819s
+Execution time: 0.014404491s
+I/O time: 0.000947790s
+Full time: 0.017305100s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001910668s
+Execution time: 0.014164566s
+I/O time: 0.000922392s
+Full time: 0.016997626s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001929154s
+Execution time: 0.014444948s
+I/O time: 0.000971655s
+Full time: 0.017345757s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001941497s
+Execution time: 0.014830510s
+I/O time: 0.001202123s
+Full time: 0.017974130s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001944262s
+Execution time: 0.014520372s
+I/O time: 0.000924225s
+Full time: 0.017388859s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.001943451s
+Execution time: 0.015369173s
+I/O time: 0.000929495s
+Full time: 0.018242119s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 256' (10 runs):
 
-             16.64 msec task-clock                #    0.969 CPUs utilized            ( +-  0.46% )
-                 0      context-switches          #    0.012 K/sec                    ( +- 66.67% )
-                 0      cpu-migrations            #    0.006 K/sec                    ( +-100.00% )
-               697      page-faults               #    0.042 M/sec                    ( +-  0.04% )
-        48,657,094      cycles                    #    2.925 GHz                      ( +-  0.21% )
-        73,902,543      instructions              #    1.52  insn per cycle           ( +-  0.03% )
-         8,780,717      branches                  #  527.786 M/sec                    ( +-  0.04% )
-            26,031      branch-misses             #    0.30% of all branches          ( +-  1.36% )
+             17,87 msec task-clock                #    0,989 CPUs utilized            ( +-  1,44% )
+                 2      context-switches          #    0,090 K/sec                    ( +- 10,21% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+               701      page-faults               #    0,039 M/sec                    ( +-  0,05% )
+        49.417.082      cycles                    #    2,765 GHz                      ( +-  0,37% )  (77,65%)
+           117.958      stalled-cycles-frontend   #    0,24% frontend cycles idle     ( +-  2,37% )  (77,65%)
+        34.005.404      stalled-cycles-backend    #   68,81% backend cycles idle      ( +-  1,72% )  (77,66%)
+        66.710.043      instructions              #    1,35  insn per cycle         
+                                                  #    0,51  stalled cycles per insn  ( +-  2,28% )  (81,81%)
+         7.960.590      branches                  #  445,456 M/sec                    ( +-  3,10% )  (97,86%)
+            17.497      branch-misses             #    0,22% of all branches          ( +-  0,67% )  (87,36%)
 
-         0.0171763 +- 0.0000901 seconds time elapsed  ( +-  0.52% )
+          0,018072 +- 0,000262 seconds time elapsed  ( +-  1,45% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.007593128s
+Execution time: 0.046303492s
+I/O time: 0.003594115s
+Full time: 0.057490735s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008149595s
+Execution time: 0.045800718s
+I/O time: 0.003740482s
+Full time: 0.057690795s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.005243225s
+Execution time: 0.042984210s
+I/O time: 0.003622859s
+Full time: 0.051850294s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.007953182s
+Execution time: 0.046111708s
+I/O time: 0.003647816s
+Full time: 0.057712706s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008155656s
+Execution time: 0.046850550s
+I/O time: 0.003629462s
+Full time: 0.058635668s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008087317s
+Execution time: 0.044915486s
+I/O time: 0.003617289s
+Full time: 0.056620092s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008100452s
+Execution time: 0.046039961s
+I/O time: 0.003637728s
+Full time: 0.057778141s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008085533s
+Execution time: 0.044152758s
+I/O time: 0.003620645s
+Full time: 0.055858936s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008079191s
+Execution time: 0.045737046s
+I/O time: 0.003634061s
+Full time: 0.057450298s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.008135207s
+Execution time: 0.046130073s
+I/O time: 0.003634952s
+Full time: 0.057900232s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 512' (10 runs):
 
-             66.91 msec task-clock                #    0.993 CPUs utilized            ( +-  1.92% )
-                 1      context-switches          #    0.016 K/sec                    ( +- 36.99% )
-                 0      cpu-migrations            #    0.001 K/sec                    ( +-100.00% )
-             2,566      page-faults               #    0.038 M/sec                    ( +-  2.00% )
-       193,684,323      cycles                    #    2.895 GHz                      ( +-  1.10% )
-       292,873,020      instructions              #    1.51  insn per cycle           ( +-  0.06% )
-        34,611,186      branches                  #  517.276 M/sec                    ( +-  0.09% )
-            91,281      branch-misses             #    0.26% of all branches          ( +- 17.20% )
+             57,51 msec task-clock                #    0,996 CPUs utilized            ( +-  1,07% )
+                 6      context-switches          #    0,104 K/sec                    ( +-  3,51% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.621      page-faults               #    0,046 M/sec                    ( +-  0,01% )
+       190.511.169      cycles                    #    3,313 GHz                      ( +-  0,18% )  (79,29%)
+           241.340      stalled-cycles-frontend   #    0,13% frontend cycles idle     ( +-  6,95% )  (81,00%)
+       148.941.375      stalled-cycles-backend    #   78,18% backend cycles idle      ( +-  0,73% )  (84,93%)
+       304.980.460      instructions              #    1,60  insn per cycle         
+                                                  #    0,49  stalled cycles per insn  ( +-  0,24% )  (86,10%)
+        35.789.226      branches                  #  622,338 M/sec                    ( +-  0,19% )  (86,09%)
+            55.514      branch-misses             #    0,16% of all branches          ( +-  1,18% )  (82,60%)
 
-           0.06737 +- 0.00129 seconds time elapsed  ( +-  1.92% )
+          0,057733 +- 0,000621 seconds time elapsed  ( +-  1,08% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.023915010s
+Execution time: 0.176130858s
+I/O time: 0.014275146s
+Full time: 0.214321014s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.024751278s
+Execution time: 0.171425073s
+I/O time: 0.014550829s
+Full time: 0.210727180s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.025456857s
+Execution time: 0.171317628s
+I/O time: 0.014497939s
+Full time: 0.211272424s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.026183117s
+Execution time: 0.174836861s
+I/O time: 0.014515001s
+Full time: 0.215534979s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.025608826s
+Execution time: 0.175290041s
+I/O time: 0.014505423s
+Full time: 0.215404290s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.026081413s
+Execution time: 0.175148233s
+I/O time: 0.014498409s
+Full time: 0.215728055s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.025470954s
+Execution time: 0.174562289s
+I/O time: 0.014497799s
+Full time: 0.214531042s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.026147990s
+Execution time: 0.171675768s
+I/O time: 0.014568212s
+Full time: 0.212391970s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.025238362s
+Execution time: 0.175430598s
+I/O time: 0.014454346s
+Full time: 0.215123306s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.026132220s
+Execution time: 0.175972146s
+I/O time: 0.014506986s
+Full time: 0.216611352s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 1024' (10 runs):
 
-            254.95 msec task-clock                #    0.996 CPUs utilized            ( +-  0.15% )
-                 9      context-switches          #    0.034 K/sec                    ( +-  9.84% )
-                 1      cpu-migrations            #    0.003 K/sec                    ( +- 31.18% )
-             8,764      page-faults               #    0.034 M/sec                    ( +-  0.00% )
-       752,255,523      cycles                    #    2.951 GHz                      ( +-  0.10% )
-     1,164,272,250      instructions              #    1.55  insn per cycle           ( +-  0.01% )
-       137,159,551      branches                  #  537.990 M/sec                    ( +-  0.02% )
-           222,634      branch-misses             #    0.16% of all branches          ( +-  0.78% )
+            215,81 msec task-clock                #    0,998 CPUs utilized            ( +-  0,30% )
+                21      context-switches          #    0,097 K/sec                    ( +-  1,74% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+            10.301      page-faults               #    0,048 M/sec                    ( +-  0,00% )
+       758.558.192      cycles                    #    3,515 GHz                      ( +-  0,27% )  (83,28%)
+           954.551      stalled-cycles-frontend   #    0,13% frontend cycles idle     ( +-  1,78% )  (83,33%)
+       600.153.930      stalled-cycles-backend    #   79,12% backend cycles idle      ( +-  0,36% )  (83,33%)
+     1.160.396.998      instructions              #    1,53  insn per cycle         
+                                                  #    0,52  stalled cycles per insn  ( +-  0,16% )  (83,33%)
+       128.715.671      branches                  #  596,436 M/sec                    ( +-  0,75% )  (83,53%)
+           189.927      branch-misses             #    0,15% of all branches          ( +-  0,69% )  (83,21%)
 
-          0.256053 +- 0.000660 seconds time elapsed  ( +-  0.26% )
+          0,216198 +- 0,000640 seconds time elapsed  ( +-  0,30% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.083698492s
+Execution time: 0.700313648s
+I/O time: 0.066972624s
+Full time: 0.850984764s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087500842s
+Execution time: 0.684220591s
+I/O time: 0.067909353s
+Full time: 0.839630786s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087829065s
+Execution time: 0.703025747s
+I/O time: 0.067879225s
+Full time: 0.858734037s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.088194778s
+Execution time: 0.684551568s
+I/O time: 0.115146663s
+Full time: 0.887893009s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087001484s
+Execution time: 0.684611942s
+I/O time: 0.068215723s
+Full time: 0.839829149s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.086764163s
+Execution time: 0.683652318s
+I/O time: 0.066337779s
+Full time: 0.836754260s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087657399s
+Execution time: 0.684222210s
+I/O time: 0.080009277s
+Full time: 0.851888886s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.088148762s
+Execution time: 0.698841547s
+I/O time: 0.080049734s
+Full time: 0.867040043s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087152469s
+Execution time: 0.684200087s
+I/O time: 0.080085192s
+Full time: 0.851437748s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.087900209s
+Execution time: 0.702939988s
+I/O time: 0.079790151s
+Full time: 0.870630348s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 2048' (10 runs):
 
-          1,026.19 msec task-clock                #    0.999 CPUs utilized            ( +-  0.37% )
-                25      context-switches          #    0.025 K/sec                    ( +- 20.48% )
-                 4      cpu-migrations            #    0.004 K/sec                    ( +- 25.72% )
-            33,352      page-faults               #    0.033 M/sec                    ( +-  0.00% )
-     3,010,694,409      cycles                    #    2.934 GHz                      ( +-  0.16% )
-     4,650,061,230      instructions              #    1.54  insn per cycle           ( +-  0.01% )
-       547,385,526      branches                  #  533.415 M/sec                    ( +-  0.02% )
-           826,057      branch-misses             #    0.15% of all branches          ( +-  0.96% )
+            841,74 msec task-clock                #    0,976 CPUs utilized            ( +-  0,34% )
+                78      context-switches          #    0,093 K/sec                    ( +-  0,97% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+            41.021      page-faults               #    0,049 M/sec                    ( +-  0,00% )
+     2.998.052.364      cycles                    #    3,562 GHz                      ( +-  0,33% )  (83,22%)
+         3.530.415      stalled-cycles-frontend   #    0,12% frontend cycles idle     ( +-  1,12% )  (83,24%)
+     2.375.641.459      stalled-cycles-backend    #   79,24% backend cycles idle      ( +-  0,40% )  (83,22%)
+     4.676.640.213      instructions              #    1,56  insn per cycle         
+                                                  #    0,51  stalled cycles per insn  ( +-  0,03% )  (83,41%)
+       531.024.079      branches                  #  630,861 M/sec                    ( +-  0,21% )  (83,56%)
+           725.118      branch-misses             #    0,14% of all branches          ( +-  0,28% )  (83,34%)
 
-           1.02722 +- 0.00375 seconds time elapsed  ( +-  0.36% )
+           0,86231 +- 0,00511 seconds time elapsed  ( +-  0,59% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.331668953s
+Execution time: 2.735583112s
+I/O time: 0.300833049s
+Full time: 3.368085114s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332436259s
+Execution time: 2.811040904s
+I/O time: 0.303693107s
+Full time: 3.447170270s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332303305s
+Execution time: 2.736234812s
+I/O time: 0.303931678s
+Full time: 3.372469795s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.335598540s
+Execution time: 2.809176856s
+I/O time: 0.318275441s
+Full time: 3.463050837s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332733600s
+Execution time: 2.736048680s
+I/O time: 0.353718501s
+Full time: 3.422500781s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332327198s
+Execution time: 2.819957265s
+I/O time: 0.303972233s
+Full time: 3.456256696s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.334828214s
+Execution time: 2.821171983s
+I/O time: 0.303359450s
+Full time: 3.459359647s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332906024s
+Execution time: 2.734495676s
+I/O time: 0.303773485s
+Full time: 3.371175185s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.334764071s
+Execution time: 2.738116111s
+I/O time: 0.313205710s
+Full time: 3.386085892s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.332712634s
+Execution time: 2.733886212s
+I/O time: 0.306310379s
+Full time: 3.372909225s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 4096' (10 runs):
 
-          4,237.87 msec task-clock                #    0.995 CPUs utilized            ( +-  1.14% )
-                91      context-switches          #    0.021 K/sec                    ( +- 25.59% )
-                12      cpu-migrations            #    0.003 K/sec                    ( +- 16.55% )
-           131,704      page-faults               #    0.031 M/sec                    ( +-  0.00% )
-    12,214,979,251      cycles                    #    2.882 GHz                      ( +-  0.52% )
-    18,599,148,267      instructions              #    1.52  insn per cycle           ( +-  0.01% )
-     2,189,384,965      branches                  #  516.624 M/sec                    ( +-  0.02% )
-         3,981,214      branch-misses             #    0.18% of all branches          ( +-  7.06% )
+          3.348,12 msec task-clock                #    0,975 CPUs utilized            ( +-  0,40% )
+               308      context-switches          #    0,092 K/sec                    ( +-  0,62% )
+                 0      cpu-migrations            #    0,000 K/sec                  
+           163.901      page-faults               #    0,049 M/sec                    ( +-  0,00% )
+    11.974.441.526      cycles                    #    3,576 GHz                      ( +-  0,40% )  (83,31%)
+        13.184.294      stalled-cycles-frontend   #    0,11% frontend cycles idle     ( +-  1,15% )  (83,30%)
+     9.494.267.290      stalled-cycles-backend    #   79,29% backend cycles idle      ( +-  0,50% )  (83,35%)
+    18.681.326.329      instructions              #    1,56  insn per cycle         
+                                                  #    0,51  stalled cycles per insn  ( +-  0,03% )  (83,36%)
+     2.106.690.069      branches                  #  629,217 M/sec                    ( +-  0,06% )  (83,37%)
+         2.726.063      branch-misses             #    0,13% of all branches          ( +-  0,12% )  (83,32%)
 
-            4.2584 +- 0.0546 seconds time elapsed  ( +-  1.28% )
+            3,4324 +- 0,0132 seconds time elapsed  ( +-  0,38% )
 
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.319135899s
+Execution time: 10.938184539s
+I/O time: 1.302122878s
+Full time: 13.559443316s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.319215469s
+Execution time: 10.935371112s
+I/O time: 1.313810698s
+Full time: 13.568397279s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.317914133s
+Execution time: 11.227732994s
+I/O time: 1.311386271s
+Full time: 13.857033398s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.318620039s
+Execution time: 10.932979948s
+I/O time: 1.306291008s
+Full time: 13.557890995s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.318779496s
+Execution time: 11.284506550s
+I/O time: 1.314761819s
+Full time: 13.918047865s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.320015624s
+Execution time: 11.249522841s
+I/O time: 1.306265677s
+Full time: 13.875804142s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.311823710s
+Execution time: 10.942027274s
+I/O time: 1.308356839s
+Full time: 13.562207823s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.313205487s
+Execution time: 10.943508868s
+I/O time: 1.263311048s
+Full time: 13.520025403s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.310670458s
+Execution time: 11.266533752s
+I/O time: 1.273684196s
+Full time: 13.850888406s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 1.311768345s
+Execution time: 10.940578789s
+I/O time: 1.300999418s
+Full time: 13.553346552s
 
  Performance counter stats for './mandelbrot_seq -2.5 1.5 -2.0 2.0 8192' (10 runs):
 
-         17,397.87 msec task-clock                #    0.998 CPUs utilized            ( +-  0.17% )
-               720      context-switches          #    0.041 K/sec                    ( +- 13.45% )
-               141      cpu-migrations            #    0.008 K/sec                    ( +- 13.76% )
-           525,112      page-faults               #    0.030 M/sec                    ( +-  0.00% )
-    49,197,681,167      cycles                    #    2.828 GHz                      ( +-  0.15% )
-    74,479,115,491      instructions              #    1.51  insn per cycle           ( +-  0.01% )
-     8,771,682,801      branches                  #  504.181 M/sec                    ( +-  0.02% )
-        17,114,608      branch-misses             #    0.20% of all branches          ( +-  1.23% )
+         13.359,35 msec task-clock                #    0,971 CPUs utilized            ( +-  0,39% )
+             1.253      context-switches          #    0,094 K/sec                    ( +-  0,50% )
+                 0      cpu-migrations            #    0,000 K/sec                    ( +- 66,67% )
+           655.421      page-faults               #    0,049 M/sec                    ( +-  0,00% )
+    47.874.570.847      cycles                    #    3,584 GHz                      ( +-  0,39% )  (83,31%)
+        50.097.377      stalled-cycles-frontend   #    0,10% frontend cycles idle     ( +-  0,92% )  (83,33%)
+    37.969.262.301      stalled-cycles-backend    #   79,31% backend cycles idle      ( +-  0,51% )  (83,33%)
+    74.776.978.863      instructions              #    1,56  insn per cycle         
+                                                  #    0,51  stalled cycles per insn  ( +-  0,01% )  (83,34%)
+     8.438.035.821      branches                  #  631,620 M/sec                    ( +-  0,02% )  (83,35%)
+        10.551.827      branch-misses             #    0,13% of all branches          ( +-  0,11% )  (83,34%)
 
-           17.4381 +- 0.0252 seconds time elapsed  ( +-  0.14% )
+           13,7516 +- 0,0531 seconds time elapsed  ( +-  0,39% )
 
