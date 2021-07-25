@@ -39,8 +39,8 @@ mkdir -p results/$NAME
 
     for TASKS in 1 8 16 32 64; do
         let "TOTAL_TASKS = $TASKS + $MASTER_TASK"
-        # perf stat -r $MEASUREMENTS mpirun -n $TOTAL_TASKS ./$NAME -0.188 -0.012 0.554 0.754 >> triple_spiral.log 2>&1
-        mpirun -n $TOTAL_TASKS ./$NAME -0.188 -0.012 0.554 0.754 $SIZE >> triple_spiral.log 2>&1
+        perf stat -r $MEASUREMENTS mpirun -n $TOTAL_TASKS ./$NAME -0.188 -0.012 0.554 0.754 >> triple_spiral.log 2>&1
+        # mpirun -n $TOTAL_TASKS ./$NAME -0.188 -0.012 0.554 0.754 $SIZE >> triple_spiral.log 2>&1
     done
 
 mv *.log results/$NAME
