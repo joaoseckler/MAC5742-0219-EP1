@@ -2,9 +2,12 @@
 *.ppm
 .ipynb_checkpoints
 
-src/mandelbrot_seq
-src/mandelbrot_pth
-src/mandelbrot_omp
+mandelbrot_seq
+mandelbrot_pth
+mandelbrot_omp
+mandelbrot_ompi
+mandelbrot_ompi_pth
+mandelbrot_ompi_omp
 
 measurements/
 
