@@ -64,10 +64,10 @@ void init(int argc, char *argv[])
     {
         printf("usage: ./mandelbrot_pth c_x_min c_x_max c_y_min c_y_max image_size num_threads\n");
         printf("examples with image_size = 11500:\n");
-        printf("    Full Picture:         ./mandelbrot_pth -2.5 1.5 -2.0 2.0 11500 32\n");
-        printf("    Seahorse Valley:      ./mandelbrot_pth -0.8 -0.7 0.05 0.15 11500 64\n");
-        printf("    Elephant Valley:      ./mandelbrot_pth 0.175 0.375 -0.1 0.1 11500 128\n");
-        printf("    Triple Spiral Valley: ./mandelbrot_pth -0.188 -0.012 0.554 0.754 11500 256\n");
+        printf("    Full Picture:         ./ompi_pth -2.5 1.5 -2.0 2.0 11500 32\n");
+        printf("    Seahorse Valley:      ./ompi_pth -0.8 -0.7 0.05 0.15 11500 64\n");
+        printf("    Elephant Valley:      ./ompi_pth 0.175 0.375 -0.1 0.1 11500 128\n");
+        printf("    Triple Spiral Valley: ./ompi_pth -0.188 -0.012 0.554 0.754 11500 256\n");
         exit(0);
     }
     else
@@ -206,9 +206,7 @@ void update()
 
 void compute_mandelbrot(int argc, char *argv[])
 {
-
-    int rc, dest, i, j = 0, tag1,
-                     tag2, source, leftover, nprocs, myid, offset, tmp;
+    int dest, i, source, leftover, nprocs, myid, offset, tmp, master_slice;
 
     //init mpi
     flat = (unsigned char *)malloc(sizeof(unsigned char) * image_buffer_size * 3);
@@ -217,18 +215,15 @@ void compute_mandelbrot(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     //start of mpi
-    int flat_slice = image_buffer_size * 3 / nprocs;
     image_slice = image_size / nprocs;
     leftover = image_size % nprocs;
-    tag1 = 2;
-    tag2 = 1;
     pthread_t threads[num_threads];
     struct thread_data thread_data_array[num_threads];
 
     if (myid == MASTER)
     {
 
-        offset = image_slice + leftover;
+        offset = 0;
         for (dest = 1; dest < nprocs; dest++)
         {
             MPI_Send(&offset, 1, MPI_INT, dest, 1, MPI_COMM_WORLD);
@@ -237,11 +232,11 @@ void compute_mandelbrot(int argc, char *argv[])
         }
 
         //work
-        offset = 0;
-        for (i = 0; i < image_slice % num_threads; i++)
+        master_slice = image_slice + leftover;
+        for (i = 0; i < master_slice % num_threads; i++)
         {
             thread_data_array[i].start = offset;
-            offset += image_slice / num_threads + 1;
+            offset += master_slice / num_threads + 1;
             thread_data_array[i].end = offset;
             pthread_create(&threads[i], NULL, thread_routine, (void *)&thread_data_array[i]);
         }
@@ -249,7 +244,7 @@ void compute_mandelbrot(int argc, char *argv[])
         for (; i < num_threads; i++)
         {
             thread_data_array[i].start = offset;
-            offset += image_slice / num_threads;
+            offset += master_slice / num_threads;
             thread_data_array[i].end = offset;
             pthread_create(&threads[i], NULL, thread_routine, (void *)&thread_data_array[i]);
         }
@@ -259,10 +254,12 @@ void compute_mandelbrot(int argc, char *argv[])
             pthread_join(threads[i], NULL);
         }
 
+        offset = 0;
         for (i = 1; i < nprocs; i++)
         {
             source = i;
-            MPI_Recv(&flat[flat_slice * i], flat_slice, MPI_UNSIGNED_CHAR, source, 4, MPI_COMM_WORLD, &status);
+            MPI_Recv(&flat[offset*image_size*3], image_slice*image_size*3, MPI_UNSIGNED_CHAR, source, 4, MPI_COMM_WORLD, &status);
+            offset += image_slice;
         }
 
         update();
@@ -275,9 +272,11 @@ void compute_mandelbrot(int argc, char *argv[])
         source = MASTER;
         MPI_Recv(&tmp, 1, MPI_INT, source, 1, MPI_COMM_WORLD, &status);
 
+
         /* Do my part of the work */
         //work
         offset = tmp;
+
         for (i = 0; i < image_slice % num_threads; i++)
         {
             thread_data_array[i].start = offset;
@@ -301,7 +300,7 @@ void compute_mandelbrot(int argc, char *argv[])
 
         /* Send my results back to the master task */
         dest = MASTER;
-        MPI_Send(&flat[flat_slice * myid], flat_slice, MPI_UNSIGNED_CHAR, dest, 4, MPI_COMM_WORLD);
+        MPI_Send(&flat[tmp*image_size*3], image_slice*image_size*3, MPI_UNSIGNED_CHAR, dest, 4, MPI_COMM_WORLD);
     } /* end of non-master */
 
     MPI_Finalize();
