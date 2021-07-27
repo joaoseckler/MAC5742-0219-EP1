@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <mpi.h>
+#include <omp.h>
 #include <string.h>
 #define MASTER 0
 
@@ -24,6 +25,7 @@ int i_y_max;
 int image_buffer_size;
 int image_slice;
 
+int num_threads;
 int gradient_size = 16;
 int colors[17][3] = {
     {66, 30, 15},
@@ -60,7 +62,7 @@ void init(int argc, char *argv[])
 {
     if (argc < 6)
     {
-        printf("usage: ./mandelbrot_pth c_x_min c_x_max c_y_min c_y_max image_size\n");
+        printf("usage: ./mandelbrot_pth c_x_min c_x_max c_y_min c_y_max image_size num_threads\n");
         printf("examples with image_size = 11500:\n");
         printf("    Full Picture:         ./ompi_pth -2.5 1.5 -2.0 2.0 11500 32\n");
         printf("    Seahorse Valley:      ./ompi_pth -0.8 -0.7 0.05 0.15 11500 64\n");
@@ -75,6 +77,10 @@ void init(int argc, char *argv[])
         sscanf(argv[3], "%lf", &c_y_min);
         sscanf(argv[4], "%lf", &c_y_max);
         sscanf(argv[5], "%d", &image_size);
+        if (argc >= 7)
+            sscanf(argv[6], "%d", &num_threads);
+        else
+            num_threads = 32;
 
         i_x_max = image_size;
         i_y_max = image_size;
@@ -134,7 +140,6 @@ struct thread_data
 
 void calculate(int start, int end)
 {
-    int i_y;
     double z_x;
     double z_y;
     double z_x_squared;
@@ -145,6 +150,10 @@ void calculate(int start, int end)
     double c_y;
 
     int iteration;
+
+    int i_x;
+    int i_y;
+
     for (i_y = start; i_y < end; i_y++)
     {
         c_y = c_y_min + i_y * pixel_height;
@@ -154,7 +163,8 @@ void calculate(int start, int end)
             c_y = 0.0;
         }
 
-        for (int i_x = 0; i_x < i_x_max; i_x++)
+        #pragma omp parallel for schedule(dynamic) default(shared) private(iteration, i_x, c_x, z_x, z_y, z_x_squared, z_y_squared) num_threads(num_threads)
+        for (i_x = 0; i_x < i_x_max; i_x++)
         {
             c_x = c_x_min + i_x * pixel_width;
 
