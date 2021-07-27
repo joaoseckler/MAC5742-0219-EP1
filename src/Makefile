@@ -4,12 +4,13 @@ IMAGE=.ppm
 
 CC=gcc
 CC_OPT=--pedantic -Wall
+MCC=mpicc
 
 CC_OMP=-fopenmp
 CC_PTH=-pthread
 
 .PHONY: all
-all: $(OUTPUT)_omp $(OUTPUT)_pth $(OUTPUT)_seq
+all: $(OUTPUT)_omp $(OUTPUT)_pth $(OUTPUT)_seq ompi_pth
 
 $(OUTPUT)_omp: $(OUTPUT)_omp.c
 	$(CC) -o $(OUTPUT)_omp $(CC_OPT) $(CC_OMP) $(OUTPUT)_omp.c
@@ -20,6 +21,9 @@ $(OUTPUT)_pth: $(OUTPUT)_pth.c
 $(OUTPUT)_seq: $(OUTPUT)_seq.c
 	$(CC) -o $(OUTPUT)_seq $(CC_OPT) $(OUTPUT)_seq.c
 
+ompi_pth: ompi_pth.c
+	$(MCC) -o ompi_pth ompi_pth.c
+
 .PHONY: clean
 clean:
-	rm -f $(OUTPUT)_omp $(OUTPUT)_pth $(OUTPUT)_seq *$(IMAGE)
+	rm -f $(OUTPUT)_omp $(OUTPUT)_pth $(OUTPUT)_seq *$(IMAGE) opmi_pth
