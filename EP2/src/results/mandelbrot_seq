@@ -1,0 +1,194 @@
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.409193754s
+Execution time: 23.346649631s
+I/O time: 0.227006249s
+Full time: 23.982849634s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.395104335s
+Execution time: 23.367377062s
+I/O time: 0.355288119s
+Full time: 24.117769516s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.395558590s
+Execution time: 23.210212399s
+I/O time: 0.436844262s
+Full time: 24.042615251s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.387693674s
+Execution time: 23.171086051s
+I/O time: 0.366828818s
+Full time: 23.925608543s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.391902308s
+Execution time: 23.050786890s
+I/O time: 0.363309738s
+Full time: 23.805998936s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.382338722s
+Execution time: 23.091326743s
+I/O time: 0.467093082s
+Full time: 23.940758547s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.388598569s
+Execution time: 23.362317668s
+I/O time: 0.370548642s
+Full time: 24.121464879s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.375650504s
+Execution time: 23.530524760s
+I/O time: 0.473081741s
+Full time: 24.379257005s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.379252789s
+Execution time: 23.428472312s
+I/O time: 0.307413471s
+Full time: 24.115138572s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.387582197s
+Execution time: 23.125518098s
+I/O time: 0.364344868s
+Full time: 23.877445163s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.396663500s
+Execution time: 23.084587453s
+I/O time: 0.355572642s
+Full time: 23.836823595s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.392937792s
+Execution time: 23.123490003s
+I/O time: 0.348808450s
+Full time: 23.865236245s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.377901751s
+Execution time: 23.003589242s
+I/O time: 0.364761739s
+Full time: 23.746252732s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.379169491s
+Execution time: 23.075219115s
+I/O time: 0.400437285s
+Full time: 23.854825891s
+1
+2
+3
+4
+5
+6
+7
+8
+Allocation time: 0.378848282s
+Execution time: 23.086804124s
+I/O time: 0.357564572s
+Full time: 23.823216978s
+
+ Performance counter stats for './mandelbrot_seq -0.188 -0.012 0.554 0.754 4096' (15 runs):
+
+         23,989.20 msec task-clock                #    1.000 CPUs utilized            ( +-  0.17% )
+               217      context-switches          #    0.009 K/sec                    ( +- 29.81% )
+                10      cpu-migrations            #    0.000 K/sec                    ( +- 23.61% )
+           131,706      page-faults               #    0.005 M/sec                    ( +-  0.00% )
+    74,124,207,113      cycles                    #    3.090 GHz                      ( +-  0.17% )
+    91,487,895,115      instructions              #    1.23  insn per cycle           ( +-  0.01% )
+     7,601,565,301      branches                  #  316.874 M/sec                    ( +-  0.02% )
+        16,932,429      branch-misses             #    0.22% of all branches          ( +-  0.05% )
+
+           23.9954 +- 0.0430 seconds time elapsed  ( +-  0.18% )
+
