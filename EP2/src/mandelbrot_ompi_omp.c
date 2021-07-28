@@ -199,7 +199,6 @@ void compute_mandelbrot(int argc, char *argv[])
         for (dest = 1; dest < nprocs; dest++)
         {
             MPI_Send(&offset, 1, MPI_INT, dest, 1, MPI_COMM_WORLD);
-            printf("Sent %d elements to task %d offset= %d\n", image_slice, dest, offset);
             offset = offset + image_slice;
         }
 
