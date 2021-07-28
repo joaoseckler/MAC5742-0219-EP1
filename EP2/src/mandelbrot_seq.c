@@ -184,21 +184,13 @@ int main(int argc, char *argv[]){
 
     init(argc, argv);
 
-    printf("1\n");
     clock_gettime(CLOCK_REALTIME, &a);
-    printf("2\n");
     allocate_image_buffer();
-    printf("3\n");
     clock_gettime(CLOCK_REALTIME, &b);
-    printf("4\n");
     compute_mandelbrot();
-    printf("5\n");
     clock_gettime(CLOCK_REALTIME, &c);
-    printf("6\n");
     write_to_file();
-    printf("7\n");
     clock_gettime(CLOCK_REALTIME, &d);
-    printf("8\n");
 
     sub_timespec("Allocation time: ", a, b);
     sub_timespec("Execution time: ", b, c);

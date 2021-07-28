@@ -16,12 +16,12 @@ double pixel_height;
 int iteration_max = 200;
 
 int image_size;
-unsigned char **image_buffer;
 unsigned char *flat;
+int flat_size;
+int flat_offset;
 
 int i_x_max;
 int i_y_max;
-int image_buffer_size;
 int image_slice;
 
 int gradient_size = 16;
@@ -45,17 +45,6 @@ int colors[17][3] = {
     {16, 16, 16},
 };
 
-void allocate_image_buffer()
-{
-    int rgb_size = 3;
-    image_buffer = (unsigned char **)malloc(sizeof(unsigned char *) * image_buffer_size);
-
-    for (int i = 0; i < image_buffer_size; i++)
-    {
-        image_buffer[i] = (unsigned char *)malloc(sizeof(unsigned char) * rgb_size);
-    }
-}
-
 void init(int argc, char *argv[])
 {
     if (argc < 6)
@@ -78,7 +67,6 @@ void init(int argc, char *argv[])
 
         i_x_max = image_size;
         i_y_max = image_size;
-        image_buffer_size = image_size * image_size;
 
         pixel_width = (c_x_max - c_x_min) / i_x_max;
         pixel_height = (c_y_max - c_y_min) / i_y_max;
@@ -92,16 +80,16 @@ void update_rgb_buffer(int iteration, int x, int y)
 
     if (iteration == iteration_max)
     {
-        flat[((i_y_max * y) + x) * 3 + 0] = colors[gradient_size][0];
-        flat[((i_y_max * y) + x) * 3 + 1] = colors[gradient_size][1];
-        flat[((i_y_max * y) + x) * 3 + 2] = colors[gradient_size][2];
+        flat[((i_y_max * y) + x) * 3 + 0 - flat_offset] = colors[gradient_size][0];
+        flat[((i_y_max * y) + x) * 3 + 1 - flat_offset] = colors[gradient_size][1];
+        flat[((i_y_max * y) + x) * 3 + 2 - flat_offset] = colors[gradient_size][2];
     }
     else
     {
         color = iteration % gradient_size;
-        flat[((i_y_max * y) + x) * 3 + 0] = colors[color][0];
-        flat[((i_y_max * y) + x) * 3 + 1] = colors[color][1];
-        flat[((i_y_max * y) + x) * 3 + 2] = colors[color][2];
+        flat[((i_y_max * y) + x) * 3 + 0 - flat_offset] = colors[color][0];
+        flat[((i_y_max * y) + x) * 3 + 1 - flat_offset] = colors[color][1];
+        flat[((i_y_max * y) + x) * 3 + 2 - flat_offset] = colors[color][2];
     }
 }
 
@@ -118,10 +106,7 @@ void write_to_file()
     fprintf(file, "P6\n %s\n %d\n %d\n %d\n", comment,
             i_x_max, i_y_max, max_color_component_value);
 
-    for (int i = 0; i < image_buffer_size; i++)
-    {
-        fwrite(image_buffer[i], 1, 3, file);
-    }
+    fwrite(flat, sizeof(unsigned char), flat_size, file);
 
     fclose(file);
 }
@@ -181,24 +166,11 @@ void calculate(int start, int end)
     }
 }
 
-void update()
-{
-    int j = 0;
-    for (int i = 0; i < image_buffer_size * 3; i += 3)
-    {
-        image_buffer[j][0] = flat[i];
-        image_buffer[j][1] = flat[i + 1];
-        image_buffer[j][2] = flat[i + 2];
-        j++;
-    }
-}
-
 void compute_mandelbrot(int argc, char *argv[])
 {
     int dest, i, source, leftover, nprocs, myid, offset, tmp;
 
     //init mpi
-    flat = (unsigned char *)malloc(sizeof(unsigned char) * image_buffer_size * 3);
     MPI_Status status;
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
@@ -209,8 +181,11 @@ void compute_mandelbrot(int argc, char *argv[])
 
     if (myid == MASTER)
     {
-
+        flat_size = image_size * image_size * 3;
+        flat = malloc(sizeof(unsigned char) * flat_size);
+        flat_offset = 0;
         offset = 0;
+
         for (dest = 1; dest < nprocs; dest++)
         {
             MPI_Send(&offset, 1, MPI_INT, dest, 1, MPI_COMM_WORLD);
@@ -229,7 +204,6 @@ void compute_mandelbrot(int argc, char *argv[])
             offset += image_slice;
         }
 
-        update();
         write_to_file();
     }
 
@@ -239,23 +213,25 @@ void compute_mandelbrot(int argc, char *argv[])
         source = MASTER;
         MPI_Recv(&tmp, 1, MPI_INT, source, 1, MPI_COMM_WORLD, &status);
 
+        flat_size = image_slice * image_size * 3;
+        flat = malloc(sizeof(unsigned char) * flat_size);
+        flat_offset = tmp * image_size * 3;
+
         calculate(tmp, tmp + image_slice);
 
         /* Send my results back to the master task */
         dest = MASTER;
-        MPI_Send(&flat[tmp*image_size*3], image_slice*image_size*3, MPI_UNSIGNED_CHAR, dest, 4, MPI_COMM_WORLD);
+        MPI_Send(flat, flat_size, MPI_UNSIGNED_CHAR, dest, 4, MPI_COMM_WORLD);
     } /* end of non-master */
 
+    MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize();
-    //MPI_Barrier(MPI_COMM_WORLD);
 }
 
 int main(int argc, char *argv[])
 {
 
     init(argc, argv);
-
-    allocate_image_buffer();
 
     compute_mandelbrot(argc, argv);
 
